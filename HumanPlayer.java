@@ -11,9 +11,8 @@ class HumanPlayer extends Player {
     GameField makeMove(GameField gameField, GameState gameState) {
         Position[][] field = gameField.getGameField();
         System.out.println("Ведите координаты: X от 1 до 3 (X- по горизонтали, Y- по вертикали, начало координат- левое верхнее поле): ");
-        int X, Y;
-        X = gameState.getDataReceiver().validation();
-        Y = gameState.getDataReceiver().validation();
+        int X = gameState.getDataReceiver().validation();
+        int Y = gameState.getDataReceiver().validation();
         do {
             if (field[X - 1][Y - 1].getValue() != ' ') {
                 System.out.println("Эта ячейка занята! Выберите другую!");

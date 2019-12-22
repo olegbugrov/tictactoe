@@ -4,7 +4,6 @@ package ru.olegbugrov.tictactoe;
 class GameState {
     private Complexity complexity;
     private KindOfGame kindOfGame;
-
     private DataReceiver dataReceiver = new DataReceiver();
 
     GameState() {
