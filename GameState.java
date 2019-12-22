@@ -1,7 +1,8 @@
 package ru.olegbugrov.tictactoe;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import static java.lang.Integer.parseInt;
 
 
 class GameState {
@@ -11,9 +12,18 @@ class GameState {
 
     GameState() {
         this.scanner = new Scanner(System.in);
-//        try (Scanner scanner = new Scanner(System.in)) {
-        System.out.print("Введите сложность игры (\"1: easy\", \"2: medium\", \"3: hard\": ");
-        switch (scanner.nextInt()) {
+        int intComplexity, intKindOfGame;
+        System.out.print("Введите сложность игры (\"1: easy\", \"2: medium\", \"3: hard\"): ");
+        do {
+            String strComplexity = scanner.next();
+            if (!strComplexity.matches("\\d")) {
+                System.out.println("Уровень сложности - целые числа от 1 до 3.");
+                continue;
+            }
+            intComplexity = parseInt(strComplexity);
+            break;
+        } while (true);
+        switch (intComplexity) {
             case 1:
                 this.complexity = Complexity.EASY;
                 break;
@@ -27,8 +37,17 @@ class GameState {
                 System.out.println("Сложность неверная");
                 return;
         }
-        System.out.print("Введите тип игры (\"1: компьютер-компьютер\", \"2: компьютер- человек\", \"3:человек- человек\": ");
-        switch (scanner.nextInt()) {
+        System.out.print("Введите тип игры (\"1: компьютер-компьютер\", \"2: компьютер- человек\", \"3:человек- человек\"): ");
+        do {
+            String strKindOfGame = scanner.next();
+            if (!strKindOfGame.matches("\\d")) {
+                System.out.println("Вид игры - целые числа от 1 до 3.");
+                continue;
+            }
+            intKindOfGame = parseInt(strKindOfGame);
+            break;
+        } while (true);
+        switch (intKindOfGame) {
             case 1:
                 this.kindOfGame = KindOfGame.COMP;
                 break;
@@ -41,9 +60,6 @@ class GameState {
             default:
                 System.out.println("Вид игры неверный");
         }
-//        } catch (InputMismatchException e) {
-//            System.out.println("Неверный формат данных: " + e);
-//        }
     }
 
     Scanner getScanner() {
