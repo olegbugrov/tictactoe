@@ -21,6 +21,10 @@ class GameState {
                 continue;
             }
             intComplexity = parseInt(strComplexity);
+            if (intComplexity < 1 || intComplexity > 3) {
+                System.out.println("Уровень сложности - целые числа от 1 до 3.");
+                continue;
+            }
             break;
         } while (true);
         switch (intComplexity) {
@@ -45,6 +49,10 @@ class GameState {
                 continue;
             }
             intKindOfGame = parseInt(strKindOfGame);
+            if (intKindOfGame < 1 || intKindOfGame > 3) {
+                System.out.println("Уровень сложности - целые числа от 1 до 3.");
+                continue;
+            }
             break;
         } while (true);
         switch (intKindOfGame) {
