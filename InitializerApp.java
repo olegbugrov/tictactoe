@@ -10,11 +10,11 @@ class InitializerApp {
     InitializerApp() {
         switch (gameState.getKindOfGame()) {
             case COMP:
-                this.player1 = new CompPlayer(Token.TOKEN_O.getValToken());
-                this.player2 = new CompPlayer(Token.TOKEN_X.getValToken());
+                this.player1 = new CompPlayerEasy(Token.TOKEN_O.getValToken());
+                this.player2 = new CompPlayerEasy(Token.TOKEN_X.getValToken());
                 break;
             case HUMAN:
-                this.player1 = new CompPlayer(Token.TOKEN_O.getValToken());
+                this.player1 = new CompPlayerEasy(Token.TOKEN_O.getValToken());
                 this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
                 break;
             case BOTH_HUMAN:
