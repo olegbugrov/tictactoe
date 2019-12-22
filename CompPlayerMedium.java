@@ -1,6 +1,7 @@
 package ru.olegbugrov.tictactoe;
 
 public class CompPlayerMedium extends Player {
+
     CompPlayerMedium(char token) {
         super(token);
     }
