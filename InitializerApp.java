@@ -10,13 +10,37 @@ class InitializerApp {
     InitializerApp() {
         switch (gameState.getKindOfGame()) {
             case COMP:
-                this.player1 = new CompPlayerEasy(Token.TOKEN_O.getValToken());
-                this.player2 = new CompPlayerEasy(Token.TOKEN_X.getValToken());
-                break;
+                switch (gameState.getComplexity()) {
+                    case EASY:
+                        this.player1 = new CompPlayerEasy(Token.TOKEN_O.getValToken());
+                        this.player2 = new CompPlayerEasy(Token.TOKEN_X.getValToken());
+                        break;
+                    case MEDIUM:
+                        this.player1 = new CompPlayerMedium(Token.TOKEN_O.getValToken());
+                        this.player2 = new CompPlayerMedium(Token.TOKEN_X.getValToken());
+                        break;
+                    case HARD:
+                        this.player1 = new CompPlayerHard(Token.TOKEN_O.getValToken());
+                        this.player2 = new CompPlayerHard(Token.TOKEN_X.getValToken());
+                        break;
+                }
+                return;
             case HUMAN:
-                this.player1 = new CompPlayerEasy(Token.TOKEN_O.getValToken());
-                this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
-                break;
+                switch (gameState.getComplexity()) {
+                    case EASY:
+                        this.player1 = new CompPlayerEasy(Token.TOKEN_O.getValToken());
+                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
+                        break;
+                    case MEDIUM:
+                        this.player1 = new CompPlayerMedium(Token.TOKEN_O.getValToken());
+                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
+                        break;
+                    case HARD:
+                        this.player1 = new HumanPlayer(Token.TOKEN_O.getValToken());
+                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
+                        break;
+                }
+                return;
             case BOTH_HUMAN:
                 this.player1 = new HumanPlayer(Token.TOKEN_O.getValToken());
                 this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
@@ -39,5 +63,6 @@ class InitializerApp {
     Player getPlayer2() {
         return player2;
     }
+
 }
 

@@ -20,9 +20,5 @@ class PrinterGameField implements OutputGamePosition {
     public void playerTurnMessage(Player player) {
         System.out.println("Ход Игрока\"" + player.getToken() + "\"");
     }
-
-//    public void gameResult(String gameResult) {
-//        System.out.println(gameResult);
-//    }
 }
 

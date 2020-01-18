@@ -3,13 +3,13 @@ package ru.olegbugrov.tictactoe;
 
 class ManagerApp {
 
-    Player currentPlayer;
     InitializerApp initializerApp = new InitializerApp();
+    OutputGamePosition printerGameField = new PrinterGameField();
     GameState gameState = initializerApp.getGameState();
     GameField currentField = initializerApp.getGameField();
-    OutputGamePosition printerGameField = new PrinterGameField();
     Player firstPlayer = initializerApp.getPlayer1();
     Player secondPlayer = initializerApp.getPlayer2();
+    Player currentPlayer;
 
     void run() {
         int minMovesToFinish = 5;
@@ -24,6 +24,6 @@ class ManagerApp {
             printerGameField.playerTurnMessage(currentPlayer);
             currentField = currentPlayer.makeMove(currentField, gameState);
             printerGameField.outputToConsole(currentField);
-        } while (--minMovesToFinish > 1 || !new Solver(currentPlayer).checkGameCompletion(currentField));
+        } while (--minMovesToFinish > 1 || !Solver.getInstance().checkGameCompletion(currentField, currentPlayer));
     }
 }

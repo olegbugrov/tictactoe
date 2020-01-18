@@ -1,6 +1,8 @@
 package ru.olegbugrov.tictactoe;
 
 
+import java.util.Arrays;
+
 class GameField {
     private final int SIZE = 3;
     private Position[][] gameField;
@@ -21,15 +23,19 @@ class GameField {
 
 
     int getNumberOfEmptyPositions() {
-        int count = 0;
-        for (Position[] arr : gameField) {
-            for (Position data : arr) {
-                if (data.getValue() == Token.TOKEN_SPACE.getValToken()) {
-                    count++;
-                }
-            }
-        }
-        return count;
+//        int count = 0;
+//        for (Position[] arr : gameField) {
+//            for (Position data : arr) {
+//                if (data.getValue() == Token.TOKEN_SPACE.getValToken()) {
+//                    count++;
+//                }
+//            }
+//        }
+        return ((int) Arrays.stream(gameField)
+                .flatMap(Arrays::stream)
+                .filter(data -> data.getValue() == Token.TOKEN_SPACE.getValToken())
+                .count());
+//        return count;
     }
 
     String getStringGameField() {

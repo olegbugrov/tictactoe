@@ -2,24 +2,20 @@ package ru.olegbugrov.tictactoe;
 
 
 class Solver {
-    private char S;
     private String gameResult = "Ничья";
-    private String[] winnerTemplates;
+    private static Solver solver;
 
-    Solver(Player player) {
-        this.S = player.getToken();
-        this.winnerTemplates = new String[]{"" + S + S + S + "      ", "   " + S + S + S + "   ", "      " + S + S + S,
-                S + "  " + S + "  " + S + "  ", " " + S + "  " + S + "  " + S + ' ', "  " + S + "  " + S + "  " + S,
-                S + "   " + S + "   " + S, "  " + S + ' ' + S + ' ' + S + "  "};
-    }
+    private Solver() {}
 
-    boolean checkGameCompletion(GameField gameField) {
+    boolean checkGameCompletion(GameField gameField, Player player) {
+        char S = player.getToken();
+        String[] winnerTemplates = WinnerTemplates.getWinnerTemplates();
         String fld = gameField.getStringGameField();
         for (String arr : winnerTemplates) {
             int count = 0;
             for (int i = 0; i < arr.length(); i++) {
-                if (arr.charAt(i) != S) continue;
-                if (arr.charAt(i) != fld.charAt(i)) break;
+                if (arr.charAt(i) ==' ') continue;
+                if (S != fld.charAt(i)) break;
                 if (++count == 3) {
                     gameResult = "Победа";
                     System.out.println(gameResult + "\"" + S + "\""); // переделать вывод результата
@@ -29,16 +25,12 @@ class Solver {
         }
         return gameField.getNumberOfEmptyPositions() == 0;
     }
+    public static Solver getInstance() {
+        if (solver == null) {
+            solver = new Solver();
+            return solver;
+        }
+        return solver;
+    }
+
 }
-//    void getWinner() {
-//        switch (gameResult) {
-//            case "Ничья":
-//                System.out.println(gameResult);
-//                break;
-//            case "Победа":
-//                System.out.println(gameResult + "\"" + S + "\"");
-//                break;
-//            default:
-//                System.out.println("Результат неизвестен :)");
-//        }
-//    }
