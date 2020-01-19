@@ -4,7 +4,7 @@ package ru.olegbugrov.tictactoe;
 import java.util.Arrays;
 
 class GameField {
-    private final int SIZE = 3;
+    private final static int SIZE = 3;
     private Position[][] gameField;
 
 
@@ -31,11 +31,11 @@ class GameField {
 //                }
 //            }
 //        }
+//        return count;
         return ((int) Arrays.stream(gameField)
                 .flatMap(Arrays::stream)
                 .filter(data -> data.getValue() == Token.TOKEN_SPACE.getValToken())
                 .count());
-//        return count;
     }
 
     String getStringGameField() {

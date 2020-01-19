@@ -5,7 +5,6 @@ class ManagerApp {
 
     InitializerApp initializerApp = new InitializerApp();
     OutputGamePosition printerGameField = new PrinterGameField();
-    GameState gameState = initializerApp.getGameState();
     GameField currentField = initializerApp.getGameField();
     Player firstPlayer = initializerApp.getPlayer1();
     Player secondPlayer = initializerApp.getPlayer2();
@@ -22,7 +21,7 @@ class ManagerApp {
                 currentPlayer = firstPlayer;
             }
             printerGameField.playerTurnMessage(currentPlayer);
-            currentField = currentPlayer.makeMove(currentField, gameState);
+            currentField = currentPlayer.makeMove(currentField);
             printerGameField.outputToConsole(currentField);
         } while (--minMovesToFinish > 1 || !Solver.getInstance().checkGameCompletion(currentField, currentPlayer));
     }

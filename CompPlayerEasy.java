@@ -8,7 +8,7 @@ class CompPlayerEasy extends Player implements RandomMove{
     }
 
     @Override
-    GameField makeMove(GameField gameField, GameState gameState) {
+    GameField makeMove(GameField gameField) {
         return makeRandomMove(gameField, token);
     }
 }

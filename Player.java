@@ -8,7 +8,7 @@ abstract class Player {
         this.token = token;
     }
 
-    abstract GameField makeMove(GameField gameField, GameState gameState);
+    abstract GameField makeMove(GameField gameField);
 
     char getToken() {
         return token;

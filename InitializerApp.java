@@ -2,7 +2,8 @@ package ru.olegbugrov.tictactoe;
 
 
 class InitializerApp {
-    private GameState gameState = new GameState();
+    private DataReceiver dataReceiver = new ScannerDataReceiver();
+    private GameState gameState = new GameState(dataReceiver);
     private GameField gameField = new GameField();
     private Player player1;
     private Player player2;
@@ -29,31 +30,27 @@ class InitializerApp {
                 switch (gameState.getComplexity()) {
                     case EASY:
                         this.player1 = new CompPlayerEasy(Token.TOKEN_O.getValToken());
-                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
+                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken(), dataReceiver);
                         break;
                     case MEDIUM:
                         this.player1 = new CompPlayerMedium(Token.TOKEN_O.getValToken());
-                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
+                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken(), dataReceiver);
                         break;
                     case HARD:
-                        this.player1 = new HumanPlayer(Token.TOKEN_O.getValToken());
-                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
+                        this.player1 = new HumanPlayer(Token.TOKEN_O.getValToken(), dataReceiver);
+                        this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken(), dataReceiver);
                         break;
                 }
                 return;
             case BOTH_HUMAN:
-                this.player1 = new HumanPlayer(Token.TOKEN_O.getValToken());
-                this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken());
+                this.player1 = new HumanPlayer(Token.TOKEN_O.getValToken(), dataReceiver);
+                this.player2 = new HumanPlayer(Token.TOKEN_X.getValToken(), dataReceiver);
                 break;
         }
     }
 
     GameField getGameField() {
         return gameField;
-    }
-
-    GameState getGameState() {
-        return gameState;
     }
 
     Player getPlayer1() {

@@ -10,10 +10,10 @@ public class CompPlayerMedium extends Player implements RandomMove{
     }
 
     @Override
-    GameField makeMove(GameField gameField, GameState gameState) {
+    GameField makeMove(GameField gameField) {
         String fld = gameField.getStringGameField();
         int idx = -1;
-        if (moveCounter++ > 1) {
+        if (moveCounter++ > 0) {
             idx = checkOneStepToWin(fld);
         }
         if (idx == -1) {

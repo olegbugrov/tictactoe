@@ -7,7 +7,7 @@ public class CompPlayerHard extends Player {
     }
 
     @Override
-    GameField makeMove(GameField gameField, GameState gameState) {
+    GameField makeMove(GameField gameField) {
         return null;
     }
 }

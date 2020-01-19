@@ -4,12 +4,10 @@ package ru.olegbugrov.tictactoe;
 class GameState {
     private Complexity complexity;
     private KindOfGame kindOfGame;
-    private DataReceiver dataReceiver;
 
-    GameState() {
-        dataReceiver = new DataReceiver();
+    GameState(DataReceiver dataReceiver) {
         System.out.print("Введите тип игры (\"1: компьютер-компьютер\", \"2: компьютер- человек\", \"3:человек- человек\"): ");
-        switch (dataReceiver.validation()) {
+        switch (dataReceiver.receivingData()) {
             case 1:
                 this.kindOfGame = KindOfGame.COMP;
                 break;
@@ -23,7 +21,7 @@ class GameState {
         }
         if (complexity == Complexity.UNDEFINED) return;
         System.out.print("Введите сложность игры (\"1: easy\", \"2: medium\", \"3: hard\"): ");
-        switch (dataReceiver.validation()) {
+        switch (dataReceiver.receivingData()) {
             case 1:
                 this.complexity = Complexity.EASY;
                 break;
@@ -36,10 +34,6 @@ class GameState {
         }
     }
 
-    public DataReceiver getDataReceiver() {
-        return dataReceiver;
-    }
-
     Complexity getComplexity() {
         return complexity;
     }
@@ -47,5 +41,4 @@ class GameState {
     KindOfGame getKindOfGame() {
         return kindOfGame;
     }
-
 }
